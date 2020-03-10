@@ -1,3 +1,5 @@
+$cards: 8;
+
 html {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
@@ -30,10 +32,13 @@ a {
 
 .header-navbar {
   &__list {
+    min-width: 750px;
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, max-content));
+    align-items: center;
   }
 
   &__item {
@@ -79,10 +84,11 @@ a {
 }
 
 .main__container {
-  display: flex;
+  display: grid;
+  grid-template-areas: "b1 b2 b3 b4" "b5 b6 b7 b8";
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   max-width: 944px;
-  flex-wrap: wrap;
-  //justify-content: space-between;
   margin: 0 auto;
 }
 
@@ -204,5 +210,12 @@ a {
     background-image: url(../images/star.svg);
     background-repeat: no-repeat;
     background-position: center;
+  }
+}
+
+@for $i from 1 to $cards {
+  .product-card--#{$i} {
+    grid-area: b#{$i};
+
   }
 }
